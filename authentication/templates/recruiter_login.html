@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recruiter login page</title>
+    <link rel="stylesheet" href='{% static "styles.css" %}' />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="flex items-center justify-center bg-[#191a1c] h-[100vh]"
+  >
+    <div
+      class="main bg-black flex h-[90vh] w-[70vw] bg-[#0c0c0c] rounded-[16px]"
+    >
+      <div class="left" style="width: 60%">
+        <form class="" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <!-- CSRF token for security -->
+
+          <div
+            class="form-container text-white flex flex-col gap-4 py-[100px] px-[160px]"
+          >
+            <div>
+              <h1 class="text-2xl text-center mb-4 font-bold">Recruiter Login </h1>
+              <p class="text-center">Welcome to JobsHub</p>
+              <p>Enter your credentials to access your Account</p>
+            </div>
+
+           <a href="/recruiter/register"><button class="bg-[#A10BE8] hover:bg-[#7a0ac6] w-full rounded-md p-2" type="button">
+              Create Your Account
+            </button>
+          </a>
+
+            <div class="or flex gap-4">
+              <hr class="w-[40%] h-[2px] self-center" />
+              <p class=''>OR</p>
+              <hr class="w-[40%] h-[2px] self-center" />
+            </div>
+
+            <div class="inputBox form-group">
+              <input
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                class="form-control bg-[#A10BE8] mb-[16px] border-none text-white w-full p-2 rounded-md placeholder-white"
+                name="username"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                placeholder="Enter username"
+                required
+              />
+              <input
+                type="password"
+                class="form-control bg-[#A10BE8] mb-[16px] border-none text-white w-full p-2 rounded-md placeholder-white"
+                id="exampleInputPassword1"
+                class="form-control"
+                id="exampleInputPassword1"
+                placeholder="Password"
+                name="password"
+                required
+              />
+              <p class="text-center text-xs mb-[16px]">
+                forget password
+              </p>
+              <button
+              class="bg-[#A10BE8] hover:bg-[#7a0ac6] w-full rounded-md p-2" type="submit"
+              >
+                Log In
+              </button>
+            </div>
+
+            <!-- Display error/success messages -->
+            {% if messages %}
+            <div class="p-4 bg-white text-red-500" role="alert">
+              {% for message in messages %} {{ message }} {% endfor %}
+            </div>
+            {% endif %}
+          </div>
+        </form>
+      </div>
+
+      <div class="right w-[40%]">
+        <img
+          src='{% static "/images/img2.png" %}'
+          alt="sm"
+          class="h-[90vh] w-[28vw] rounded-r-[18px]"
+        />
+      </div>
+    </div>
+  </body>
+</html>
